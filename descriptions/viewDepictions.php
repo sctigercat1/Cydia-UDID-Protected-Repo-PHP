@@ -74,6 +74,7 @@ if( $detect->isiOS() ){ ?>
 <input type='hidden' name='submitted'>
 Identifier: <input type='text' name='identifier'><br>
 <input type='submit' value='Search'>
+</form>
 <?php }
 } else {
 $identifier = $_POST['identifier'];
