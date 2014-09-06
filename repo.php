@@ -61,14 +61,14 @@ $requiredusergroup = $packagelist[$file_requested_deb];
 if ($usergroup >= $requiredusergroup) {
 // Log it in mysql
 ////////////////////////////////////
-$link = mysqli_connect("localhost", "ben", "ben"); //change parameters to what you use
+$link = mysqli_connect($Database, $DBUser, $DBPass); //change parameters to what you use
 if (!$link) {
     error("Couldn't connect to the database. Please try your download later.");
 }
 if (!mysqli_set_charset($link, "UTF8")) { //change UTF8 if your database uses otherwise
     error("Couldn't set the charset for the database. Please try your download later.");
 }
-if (!mysqli_select_db($link, "repo")) { //change myrepodb to your database name
+if (!mysqli_select_db($link, $DB_DB)) { //change myrepodb to your database name
     error("Couldn't open the database. Please try your download later.");
 }
     $query = mysqli_query($link, "SELECT * FROM downloads WHERE filename='$thepackageidentifier'");
