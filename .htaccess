@@ -1,0 +1,9 @@
+order allow,deny
+allow from all
+
+DirectoryIndex repo.php
+RewriteEngine On
+
+RewriteBase /repo/
+RewriteRule ^(Packages|Release)(.bz2|.gz|.xz|.lzma|.lz)?$ repofiles.php?request=%{REQUEST_FILENAME}
+RewriteRule ^debs/(.*)\.deb$ repo.php?file=$1 [QSA]
