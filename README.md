@@ -22,7 +22,7 @@ Installation Instructions
 More Detailed Explanation
 =============================
 At it's core, everything is pretty simple:
-- First, Packages and Release is redirected to /repofiles.php?request=[file]
+- First, Packages and Release are redirected to /repofiles.php?request=[file]
 - That file checks if the user UDID is in the approved list. If so, it checks the user level and builds a package list in $finalfile with the packages that the specific usergroup has permission to see.
 - After it has the list, it saves it to Packages and Packages.bz2. The file then redirects Cydia to check Packages.bz2 and Cydia does it thing from there.
 - It's mostly admin interfaces, and that's because, without it, it would be difficult to add new files.
