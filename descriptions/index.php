@@ -50,7 +50,7 @@ if( $detect->isiOS() ){ ?>
 			<li><a href="DeleteDepiction.php">Delete depiction</a></li>
 			<li><a href="pages.php">Main depiction page (get=file)</a></li>
 			<li><a href="../Admin.php">Root Admin Interface</a></li>
-			<li><a href="../..">Main Site Page</a></li>
+			<li><a href="..">Main Site Page</a></li>
 			<li><a href="unAuth.php">Unauthenticate</a></li>
 			</ul></p></li></ul>
 </body>
