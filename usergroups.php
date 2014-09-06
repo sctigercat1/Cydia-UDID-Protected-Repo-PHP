@@ -18,10 +18,12 @@ $BetaMode = true;
 $LowestBetaModeUsergroup = "1"; // Only beta users
 // This is what will be displayed in the prompt after adding
 $BetaModeNotAllowedHeader = "Sorry, only approved users can access this repo.";
-// This marks the current directory. INCLUDE TRAILING SLASH AT END OF DIRECTORY * Also change in .htaccess
-$CurrentDirectory = "http://www.example.com/repo/";
-// This is just the folder it's in. If it is in a root, do "/"
-$CurrentDirectoryFolder = "/repo/";
+// $CurrentDirectory is the current directory of your repo. It'll look something like this: http://www.example.com/repo/
+// If you don't have PHP5, you'll need to manually add it in below.
+// Also, UPDATE THIS IN HTACCESS; directories cannot be automatiaclly found there, so you'll need to manually add it.
+$CurrentDirectory = "http://".$_SERVER['HTTP_HOST']."/".basename(__DIR__)."/";
+// This is the current folder the repo's in. It would be /repo/ if using the example in the comment above. If root, the code below would most likely return something like /public_html/
+$CurrentDirectoryFolder = "/".basename(__DIR__)."/";
 // Page Title: variable below + Repo
 $RepoTitleName = "My Personal";
 // Database connection; this is how the download counter works
