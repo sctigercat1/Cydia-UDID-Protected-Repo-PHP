@@ -16,10 +16,8 @@ header("$code");
 }
 }
 $request = $_GET['request'];
-$hi = true;
 if (isset($request)) {
 if (isset($_SERVER["HTTP_X_UNIQUE_ID"])) {
-//if ($hi === true) { // Debugging
 // If Cydia
 // Let's start with the release
 ///////////////////////////////////////////////////////////////////////////////////
@@ -42,23 +40,9 @@ $usergroup = 0;
 }
 if ($BetaMode === true && $LowestBetaModeUsergroup > $usergroup) {
 header("HTTP/1.0 403 Forbidden: $BetaModeNotAllowedHeader");
-//echo "403";
 exit();
 }
-
-
-if (!isset($_SERVER["HTTP_X_UNIQUE_ID"])) { /*
-if ($request == "Release") {
-// computer
-$release_final = nl2br($release);
-echo $release_final;
-//Write anyway
-$myfile = fopen("Release", "w") or die("Unable to open file!");
-fwrite($myfile, $release);
-fclose($myfile);
-} */
-} else {
-//file_put_contents("Release",$release);
+if (isset($_SERVER["HTTP_X_UNIQUE_ID"])) { 
 // If on Cydia, just post the release file then point to it (with code at bottom)
 $myfile = fopen("Release", "w") or die("Unable to open file!");
 fwrite($myfile, $release);
@@ -67,10 +51,6 @@ fclose($myfile);
 ///////////////////////////////////////////////////////////////////////////////////
 // Now to Packages
 $debpermission = getJSON("package_groups");
-//if (isset($_SERVER["HTTP_X_UNIQUE_ID"])) {
-//} else {
-//$udid = "four";
-//}
 $ZeroPackages = array();
 $OnePackages = array();
 $TwoPackages = array();
@@ -98,7 +78,6 @@ $FourPackages[] = $deb;
 //echo "added 4 successfully";
 }
 }
-//$package_stuff = getJSON("all_packages");
 $debnames = getJSON("debnames");
 $finalfile = "";
 $debnames = array_flip($debnames);
@@ -137,7 +116,8 @@ Name: $Name
 Depiction: $Depiction
 ";
 if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag";
+$finalfile .= "Tag: $Tag
+";
 }
 if (!empty($Depends)) {
 $finalfile .= "Depends: $Depends
@@ -193,7 +173,8 @@ Name: $Name
 Depiction: $Depiction
 ";
 if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag";
+$finalfile .= "Tag: $Tag
+";
 }
 if (!empty($Depends)) {
 $finalfile .= "Depends: $Depends
@@ -249,7 +230,8 @@ Name: $Name
 Depiction: $Depiction
 ";
 if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag";
+$finalfile .= "Tag: $Tag
+";
 }
 if (!empty($Depends)) {
 $finalfile .= "Depends: $Depends
@@ -305,7 +287,8 @@ Name: $Name
 Depiction: $Depiction
 ";
 if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag";
+$finalfile .= "Tag: $Tag
+";
 }
 if (!empty($Depends)) {
 $finalfile .= "Depends: $Depends
@@ -361,7 +344,8 @@ Name: $Name
 Depiction: $Depiction
 ";
 if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag";
+$finalfile .= "Tag: $Tag
+";
 }
 if (!empty($Depends)) {
 $finalfile .= "Depends: $Depends
@@ -386,11 +370,6 @@ $fileconent = file_get_contents("Packages");
 $bz = bzopen("Packages.bz2", "w");
 bzwrite($bz, $fileconent);
 bzclose($bz);
-//$filetpecho = "Packages";
-//echo readfile($filetpecho);
-//echo file_get_contents("Packages.bz2");
-//unlink($filetpecho);
-//unlink("temp_packages.bz2");
 //////
 $request = $_GET["request"];
 	$extension = pathinfo($request, PATHINFO_EXTENSION);
