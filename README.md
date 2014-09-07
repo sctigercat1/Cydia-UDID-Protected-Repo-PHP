@@ -27,6 +27,7 @@ At it's core, everything is pretty simple:
 - After it has the list, it saves it to Packages and Packages.bz2. The file then redirects Cydia to check Packages.bz2 and Cydia does it thing from there.
 - It's mostly admin interfaces, and that's because, without it, it would be difficult to add new files.
 - Most files are stored in JSON files, but the counter is stored in a mysql database by the package identifier.
+- In PHP, there's a 128mb limit for getting files using file_get_contents. To get around this, we use ```ini_set('memory_limit', '-1');``` It should be noted, however, that downloading large packages via Cydia may cause lag on the device or other unknown problems. (PHP has this limit for a reason, so just use caution when downloading large files.)
 
 
 Credits
