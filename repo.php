@@ -1,5 +1,6 @@
 <?php
-
+// Override 128mb limit
+ini_set('memory_limit', '-1');
 include("./usergroups.php");
 
 require_once 'Mobile_Detect.php';
