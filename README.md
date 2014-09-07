@@ -7,13 +7,13 @@ Installation Instructions
 =============================
 - Open usergroups.php. This is the configuration file.
 - Add UDIDs under $Users
-- Change $CurrentDirectory to the current repo link. NOTE: If you have PHP5, this is automatically done for you. If you have anything lower, you'll need to remove the line starting with $CurrentDirectory and change it to: ```$CurrentDirectory = "http://www.example.com/repo/";```
-- Change $CurrentDirectoryFolder to the folder the repo is under. This is also automatically filled out if you have php5. Otherwise, you'll need to manually add it in too: ```$CurrentDirectoryFolder = "/repo/";```
+- Change $CurrentDirectory to the current repo link. NOTE: If you have PHP 5.3 or higher, this is automatically done for you. If you have anything lower, you'll need to remove the line starting with $CurrentDirectory and change it to: ```$CurrentDirectory = "http://www.example.com/repo/";```
+- Change $CurrentDirectoryFolder to the folder the repo is under. This is also automatically filled out if you have PHP 5.3 or higher. Otherwise, you'll need to manually add it in too: ```$CurrentDirectoryFolder = "/repo/";```
 - Change the four database variables to your database.
 - Import downloads.sql into your mysql database (with phpmyadmin, it's the import feature)
-- You can change anything else you'd like. The end of basic configuration is at "// Done editing!"
+- You can change anything else you'd like. The end of basic configuration is at ```// Done editing!```
 - Finally, open .htaccess
-- Look for the line "RewriteBase /repo/"
+- Look for the line ```RewriteBase /repo/```
 - Change /repo/ to whatever your directory is; if it's root, do /.
 - Once setup is complete, upload the github repository to your cydia repo directory and visit Admin.php in your web browser. Login with your password (default: password) and run "Create file."
 - Go into Cydia and add your repo URL!
@@ -22,7 +22,7 @@ Installation Instructions
 More Detailed Explanation
 =============================
 At it's core, everything is pretty simple:
-- First, Packages and Release are redirected to /repofiles.php?request=[file]
+- First, Packages and Release are redirected to ```/repofiles.php?request=[file]```
 - Repofiles.php then checks if the user UDID is in the approved list. If so, it checks the user level and builds a package list in the variable $finalfile with the packages that the specific usergroup has permission to see.
 - After it has the list, it saves it to Packages and Packages.bz2. The file then redirects Cydia to check Packages.bz2 and Cydia does it thing from there.
 - It's mostly admin interfaces, and that's because, without it, it would be difficult to add new files.
