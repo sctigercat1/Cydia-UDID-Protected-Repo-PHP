@@ -19,18 +19,7 @@ $request = $_GET['request'];
 if (isset($request)) {
 if (isset($_SERVER["HTTP_X_UNIQUE_ID"])) {
 // If Cydia
-// Let's start with the release
-///////////////////////////////////////////////////////////////////////////////////
-$release = "Origin: $RepoName
-Label: $RepoLabel
-Suite: $RepoSuite 
-Version: $RepoVersion
-Codename: $RepoCodename
-Architectures: $RepoArchitectures 
-Components: $RepoComponents 
-Description: $RepoDescription
-";
-// Make sure we can do this.
+// First, assign the variable $usergroup with the current user's group
 $udid = $_SERVER["HTTP_X_UNIQUE_ID"];
 $alludids = array_keys($Users);
 if (in_array($udid,$alludids)) {
@@ -38,18 +27,13 @@ $usergroup = $Users[$udid];
 } else {
 $usergroup = 0;
 }
+// Check if user can access it if betamode is on
 if ($BetaMode === true && $LowestBetaModeUsergroup > $usergroup) {
 header("HTTP/1.0 403 Forbidden: $BetaModeNotAllowedHeader");
 exit();
 }
-if (isset($_SERVER["HTTP_X_UNIQUE_ID"])) { 
-// If on Cydia, just post the release file then point to it (with code at bottom)
-$myfile = fopen("Release", "w") or die("Unable to open file!");
-fwrite($myfile, $release);
-fclose($myfile);
-}
 ///////////////////////////////////////////////////////////////////////////////////
-// Now to Packages
+// Next, onward to Packages(.bz2)
 $debpermission = getJSON("package_groups");
 $ZeroPackages = array();
 $OnePackages = array();
@@ -395,5 +379,31 @@ $request = $_GET["request"];
 header('HTTP/1.0 403 Forbidden');
 echo $BadUserError;
 }
+// Finally, Release.
+//////////////////////////////////////////////////////////////////////////////////
+// Get md5/sizes of packages and packages.bz2
+// This makes it a little more secure ;)
+$packagesize = filesize("Packages");
+$packagebz2size = filesize("Packages.bz2");
+$packagemd5 = md5_file("Packages");
+$packagebz2md5 = md5_file("Packages.bz2");
+$release = "Origin: $RepoName
+Label: $RepoLabel
+Suite: $RepoSuite 
+Version: $RepoVersion
+Codename: $RepoCodename
+Architectures: $RepoArchitectures 
+Components: $RepoComponents 
+Description: $RepoDescription
+MD5sum:
+ $packagemd5 $packagesize Packages
+ $packagebz2md5 $packagebz2size Packages.bz2
+";
+if (isset($_SERVER["HTTP_X_UNIQUE_ID"])) { 
+$myfile = fopen("Release", "w") or die("Unable to open file!");
+fwrite($myfile, $release);
+fclose($myfile);
+}
+///////////////////////////////////////////////////////////////////////////////////
 }
 ?>
