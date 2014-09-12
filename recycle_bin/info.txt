@@ -1,0 +1,1 @@
+This folder stores deb files that have been deleted via DeleteFile.
