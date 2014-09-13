@@ -1,0 +1,3 @@
+This file is a placeholder for this folder. In here, you will find each package in its own JSON along with all its information inside of it.
+
+After loading the repo, please delete this file. Thanks :)
