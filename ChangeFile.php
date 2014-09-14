@@ -172,9 +172,15 @@ if( $detect->isiOS() ){ ?>
     <meta content="width=device-width, user-scalable=no" name="viewport">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Change File</title></head><body>
     <header><h1>Change File</h1></header>
+<script type = "text/javascript">
+function copyIt() {
+var x = document.getElementByName("identifier").value;
+document.getElementByName("depiction").value = "<?php echo $old_depiction; ?>"+x;
+}
+</script>
     <h2>Fill out this form...</h2>
 		<ul><li><form action='' method='post'>
-Identifier: <input type="text" name="identifier" value="<?php echo $old_identifier; ?>"><br>
+Identifier: <input type="text" name="identifier" value="<?php echo $old_identifier; ?>" onkeyup="copyIt()"><br>
 Deb Name: <input type="text" name="debname" value="<?php echo $old_debname; ?>"><br>
 MD5Sum: <input type="text" name="md5sum" value="<?php echo $old_md5sum; ?>"><br>
 Maintainer: <input type="text" name="maintainer" value="Me">
@@ -197,8 +203,14 @@ Permission Level: <select name="permission"><option <?php if ($old_permission ==
 </body>
 </html>
 <?php } else { ?>
+<script type = "text/javascript">
+function copyItTwo() {
+var x = document.getElementByName("identifier").value;
+document.getElementByName("depiction").value = "<?php echo $old_depiction; ?>"+x;
+}
+</script>
 <form action='' method='post'>
-Identifier: <input type="text" name="identifier" value="<?php echo $old_identifier; ?>"><br>
+Identifier: <input type="text" name="identifier" value="<?php echo $old_identifier; ?>" onkeyup="copyItTwo()"><br>
 Deb Name: <input type="text" name="debname" value="<?php echo $old_debname; ?>"><br>
 MD5Sum: <input type="text" name="md5sum" value="<?php echo $old_md5sum; ?>"><br>
 Maintainer: <input type="text" name="maintainer" value="Me">
