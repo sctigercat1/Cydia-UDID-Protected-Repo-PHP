@@ -19,7 +19,7 @@ if (!isset($_SERVER["HTTP_X_UNIQUE_ID"])) {
     <ul>
         <li><p>Hello! This is my personal UDID-restricted repo!</p></li></ul><br><br><br>
 		<ul><li><a href="cydia://sources/add">Open Cydia</a></li>
-		<li><a href="Admin.php">Access admin interface (approved users only)</a></li></ul>
+		<li><a href="<?php echo $CurrentDirectory."Admin.php"; ?>">Access admin interface (approved users only)</a></li></ul>
 </body>
 </html>
 <?php // }
