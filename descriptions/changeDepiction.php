@@ -20,26 +20,19 @@ $oldNameArray = getJSON("names");
 $prepName = $oldNameArray;
 $oldDescArray = getJSON("description");
 $prepDesc = $oldDescArray;
-$oldDebArray = getJSON("../debnames");
-$prepDeb = $oldDebArray;
 if (array_key_exists($identifier_orig,$prepName)) {
 // if already exists, remove it from prep
 unset($prepName[$identifier_orig]);
 unset($prepDesc[$identifier_orig]);
-unset($prepDeb[$identifier_orig]);
 // now we create new arrays
 $newArrayNames = array($identifier_new => $name);
 $newArrayDescs = array($identifier_new => $desc);
-$newArrayDeb = array($identifier_new => $userdebname);
 // name merge
 $finalName = array_merge($prepName,$newArrayNames);
 saveJSON("names",$finalName);
 // description merge
 $finalDesc = array_merge($prepDesc,$newArrayDescs);
 saveJSON("description",$finalDesc);
-// finally, we need to do the deb name
-$finalDeb = array_merge($prepDeb,$newArrayDeb);
-saveJSON("debnames",$finalDeb);
 // Ok, they're saved
 } else {
 $noExist = true;
@@ -50,7 +43,6 @@ if( $detect->isiOS() ){ ?>
     <link href="ios7css.css" rel="stylesheet">
     <meta content="width=device-width, user-scalable=no" name="viewport">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Change Depiction</title></head><body>
-<!--	<ul><li><p>Hello, <?php // echo $_SERVER["HTTP_X_MACHINE"]; ?>!</p></li></ul> -->
     <header><h1>Change Depiction</h1></header>
     <h2>Uh oh...</h2>
 		<ul><li><p>Depiction didn't already exist.</p>
@@ -90,7 +82,6 @@ if( $detect->isiOS() ){ ?>
     <link href="ios7css.css" rel="stylesheet">
     <meta content="width=device-width, user-scalable=no" name="viewport">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"><title>Change Depiction</title></head><body>
-<!--	<ul><li><p>Hello, <?php // echo $_SERVER["HTTP_X_MACHINE"]; ?>!</p></li></ul> -->
     <header><h1>Change Depiction</h1></header>
     <h2>Fill put this form...</h2>
 		<ul><li><p><form action="" method="post">
@@ -98,7 +89,6 @@ if( $detect->isiOS() ){ ?>
 			Original Identifier: <input type="text" name="identifier_orig" autocapitalize="off" required><br>
 			New Identifier: <input type="text" name="identifier_new" autocapitalize="off" required><br>
 			Tweak name: <input type="text" name="name" required><br>
-			Tweak deb name: <input type="text" name="debnames" required><br>
 			Tweak description: <br>
 			<textarea name="description" rows="6" cols="45"></textarea><br>
 			<input type="submit" value="Submit">
@@ -111,7 +101,6 @@ if( $detect->isiOS() ){ ?>
 Original Identifier: <input type="text" name="identifier_orig" required><br>
 New Identifier: <input type="text" name="identifier_new" required><br>
 Tweak name: <input type="text" name="name"><br>
-Tweak deb name: <input type="text" name="debnames" required><br>
 Tweak description: <br>
 <textarea name="description" rows="6" cols="50"></textarea><br>
 <input type="submit" value="Submit">
