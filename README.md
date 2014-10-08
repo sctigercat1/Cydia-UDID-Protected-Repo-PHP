@@ -2,6 +2,7 @@ UDID Protected Cydia Repo in PHP
 =============================
 
 This, as stated many times, is a UDID protected cydia repo.
+What makes it different from others is that it allows you to set different usergroups per UDID: that way, you're able to set specific packages to specific users (Example: I'm usergroup 3. I can access packages in 3 and below, but not packages in 4.)
 
 Installation Instructions
 =============================
