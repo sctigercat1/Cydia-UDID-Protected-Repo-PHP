@@ -49,15 +49,12 @@ if (!array_key_exists($ident, $prepName)) {
 	$finalName = array_merge($prepName,$newArrayNames);
 //	$finalName = $prepName + $newArrayNames;
 	saveJSON("names",$finalName);
-	chmod("names",0777);
 	// description merge
 	$finalDesc = array_merge($prepDesc,$newArrayDescs);
 	saveJSON("description",$finalDesc);
-	chmod("description",0777);
 	// deb merge
 	$finalDebs = array_merge($prepDebs,$newArrayDebs);
 	saveJSON("../debnames",$finalDebs);
-	chmod("../debnames",0777);
 	echo "Added!"; 
 	echo "<br>";
 	$link1 = $CurrentDirectory . "descriptions/pages.php?file=";
