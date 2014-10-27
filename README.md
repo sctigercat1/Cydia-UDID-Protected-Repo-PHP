@@ -31,6 +31,26 @@ At it's core, everything is pretty simple:
 - Most files are stored in JSON files, but the counter is stored in a mysql database by the package identifier.
 - In PHP, there's a 128mb limit for getting files using file_get_contents. To get around this, we use ```ini_set('memory_limit', '-1');``` It should be noted, however, that downloading large packages via Cydia may cause lag on the device or other unknown problems. (PHP has this limit for a reason, so just use caution when downloading large files.)
 
+Permissions
+=============================
+- Some servers will require correct permissions to be in place before the admin interface will work correctly.
+- When adding these files, make these packages have permissions 777 and the ones not listed have 755 (or 775 if you're feeling generous):
+- /ChangeFile.php
+- /CreateFile.php
+- /debnames.json
+- /DeleteFile.php
+- /package_groups.json
+- /usergroups.php
+- -R to all_packages and recycle_bin (that's recursive by the way, but hopefully you knew that)
+- /descriptions/changeDepiction.php
+- /descriptions/createDepiction.php
+- /descriptions/DeleteDepiction.php
+- /descriptions/description.json
+- /descriptions/names.json
+- /descriptions/pages.php
+- Any deb file that you upload manually (this is optional, you just wouldn't be able to delete it using the interface)
+- All new files will be kept up with by the server. Let me know if something isn't working due to permissions (either by email, an issue here on GitHub, or pull request)
+
 
 Credits
 =============================
