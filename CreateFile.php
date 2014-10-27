@@ -76,6 +76,9 @@ if (!empty($_FILES["deb"])) {
         "debs/" . $_FILES["deb"]["name"]);
       }
     }
+ // permissions
+ $file = $_FILES["deb"]["name"];
+ chmod($file,0777);
 }
 // Done with saving deb, now check out depiction
 if (!empty($_POST['depiction_content'])) {
