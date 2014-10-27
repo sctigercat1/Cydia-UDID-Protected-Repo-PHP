@@ -60,6 +60,8 @@ $thisnewpackageinfo = array("MD5Sum" => $md5sum,
 "Replaces" => $replaces,
 "Conflicts" => $conflicts);
 saveJSON("all_packages/$identifier",$thisnewpackageinfo);
+$finalpath = "all_packages/".$identifier.".json";
+chmod ($finalpath,0777);
 // Done with package json, now save the deb from form
 if (!empty($_FILES["deb"])) {
     // get extension
