@@ -350,10 +350,12 @@ $finalfile .= "
 }
 }
 file_put_contents("Packages",$finalfile);
+chmod("Packages",0777);
 $fileconent = file_get_contents("Packages");
 $bz = bzopen("Packages.bz2", "w");
 bzwrite($bz, $fileconent);
 bzclose($bz);
+chmod("Packages.bz2",0777);
 //////
 $request = $_GET["request"];
 	$extension = pathinfo($request, PATHINFO_EXTENSION);
@@ -403,6 +405,7 @@ if (isset($_SERVER["HTTP_X_UNIQUE_ID"])) {
 $myfile = fopen("Release", "w") or die("Unable to open file!");
 fwrite($myfile, $release);
 fclose($myfile);
+chmod("Release",0777);
 }
 ///////////////////////////////////////////////////////////////////////////////////
 }
