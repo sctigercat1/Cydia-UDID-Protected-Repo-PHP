@@ -8,16 +8,26 @@ $PermissionLevels = array(
 3 => "Friend", // Friend
 4 => "Admin");
 // Users; this is where all UDIDs will be located along with their usergroup
-$Users = array(
-'sampleudid1' => 4,
-'sampleudid2' => 1);
+// First, get UDIDs from management
+// NOTE: you must use the ManageUDID.php page to add UDIDs!
+$approved_udids = getJSON("approved_udids_2");
+// Create blank arrays for holding
+$UDID = array();
+$LEVEL = array();
+// Apply UDIDs and levels from multidimensional into two separate arrays
+foreach ($approved_udids as $key => $value) {
+$UDID[] = $approved_udids[$key][0];
+$LEVEL[] = $approved_udids[$key][1];
+}
+// Now combine the arrays to get the final
+$Users = array_combine($UDID,$LEVEL);
 // Set to require a minimum usergroup (true/false).
 // NOTE: $BetaMode controls all of this, so if it's set to false none of the betamode variables would matter.
 $BetaMode = true;
 // Example: required level is 1; if user is 0 (not assigned), they can't go in, but if they're 1, they can.
 $LowestBetaModeUsergroup = "1"; // Only beta users
 // This is what will be displayed in the prompt after adding
-$BetaModeNotAllowedHeader = "Sorry, only approved users can access this repo.";
+$BetaModeNotAllowedHeader = "Sorry, only approved users can access this repo."; // something changed in Cydia, this doesn't really work any more.
 // $CurrentDirectory is the current directory of your repo. It'll look something like this: http://www.example.com/repo/
 // If you don't have PHP5, you'll need to manually add it in below.
 // Also, UPDATE THIS IN HTACCESS; directories cannot be automatiaclly found there, so you'll need to manually add it.

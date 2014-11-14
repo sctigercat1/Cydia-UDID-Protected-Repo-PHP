@@ -51,6 +51,8 @@ if( $detect->isiOS() ){ ?>
 			<li><a href="allFiles.php">All files</a></li>
 			<li><a href="descriptions">Depiction Interface</a></li>
 			<li><a href="repo.php">Repo Main Page</a></li>
+			<li><a href="ManageUDID.php">Manage UDIDs</a></li>
+			<li><a href="BetaMode.php">Beta Mode</a></li>
 			<li><a href="unauth.php">Unauthenticate</a></li>
 			</ul></p></li></ul>
 </body>
@@ -65,6 +67,8 @@ echo "<center><font size='4'>Hi! Welcome to the Admin Interface!</center><br>
 			<li><a href='allFiles.php'>All files</a></li>
 			<li><a href='descriptions'>Depiction Interface</a></li>
 			<li><a href='repo.php'>Repo Main Page</a></li>
+			<li><a href='ManageUDID.php'>Manage UDIDs</a></li>
+			<li><a href='BetaMode.php'>Beta Mode</a></li>
 			<li><a href='unauth.php'>Unauthenticate</a></li>
 			</ul></font>";
 }
