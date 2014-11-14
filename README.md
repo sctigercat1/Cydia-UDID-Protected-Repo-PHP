@@ -8,7 +8,6 @@ What makes it different from others is that it allows you to set different userg
 Installation Instructions
 =============================
 - Open usergroups.php. This is the configuration file.
-- Add UDIDs under $Users
 - Change $CurrentDirectory to the current repo link. NOTE: If you have PHP 5.3 or higher, this is automatically done for you. If you have anything lower, you'll need to remove the line starting with $CurrentDirectory and change it to: ```$CurrentDirectory = "http://www.example.com/repo/";```
 - Change $CurrentDirectoryFolder to the folder the repo is under. This is also automatically filled out if you have PHP 5.3 or higher. Otherwise, you'll need to manually add it in too: ```$CurrentDirectoryFolder = "/repo/";```
 - Change the four database variables to your database.
@@ -17,7 +16,11 @@ Installation Instructions
 - Finally, open .htaccess
 - Look for the line ```RewriteBase /repo/```
 - Change /repo/ to whatever your directory is; if it's root, do /.
-- Once setup is complete, upload the github repository to your cydia repo directory and visit Admin.php in your web browser. Login with your password (default: password) and run "Create file."
+- Once setup is complete, upload the github repository to your cydia repo directory and visit Admin.php in your web browser. Login with your password (default: password).
+- Now we need to setup permissions.  First, visit the Manage UDIDs page (ManageUDID.php).
+- Using the form, add your device's UDID and specified level (as defined in usergroups.php, anything from 0-4).
+- Save that, then return to the Admin interface and check out Beta Mode (BetaMode.php). This page (obviously) deals with beta mode which basically makes you require a minimum user level before you can access it. This level is defined in usergroups.php but can be activated/deactivated through this page. Default is off (false) but set to true if you want this.
+- Finally, return to the Admin interface and click on Create File. We need to add a package for you to download. Fill out the form on the page and click submit and make sure the deb file actually made it to /debs.
 - Go into Cydia and add your repo URL!
 
 

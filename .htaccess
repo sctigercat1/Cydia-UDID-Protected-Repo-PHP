@@ -1,5 +1,9 @@
 order allow,deny
 allow from all
+<FilesMatch "\.(?:json|log)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
 
 DirectoryIndex repo.php
 RewriteEngine On

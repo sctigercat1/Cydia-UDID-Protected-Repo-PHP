@@ -23,7 +23,8 @@ $LEVEL[] = $approved_udids[$key][1];
 $Users = array_combine($UDID,$LEVEL);
 // Set to require a minimum usergroup (true/false).
 // NOTE: $BetaMode controls all of this, so if it's set to false none of the betamode variables would matter.
-$BetaMode = true;
+$BetaModeFromJSON = getJSON("beta_mode");
+$BetaMode = $BetaModeFromJSON[0];
 // Example: required level is 1; if user is 0 (not assigned), they can't go in, but if they're 1, they can.
 $LowestBetaModeUsergroup = "1"; // Only beta users
 // This is what will be displayed in the prompt after adding
