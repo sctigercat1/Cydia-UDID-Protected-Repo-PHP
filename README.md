@@ -51,6 +51,8 @@ Permissions
 - /descriptions/description.json
 - /descriptions/names.json
 - /descriptions/pages.php
+- /beta_mode.json
+- /approved_udids_2.json
 - Any deb file that you upload manually (this is optional, you just wouldn't be able to delete it using the interface)
 - All new files will be kept up with by the server. Let me know if something isn't working due to permissions (either by email, an issue here on GitHub, or pull request)
 
