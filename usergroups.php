@@ -10,7 +10,7 @@ $PermissionLevels = array(
 // Users; this is where all UDIDs will be located along with their usergroup
 // First, get UDIDs from management
 // NOTE: you must use the ManageUDID.php page to add UDIDs!
-$approved_udids = getJSON("approved_udids_2");
+$approved_udids = json_decode(file_get_contents("approved_udids_2.json"), true);
 // Create blank arrays for holding
 $UDID = array();
 $LEVEL = array();
@@ -23,7 +23,7 @@ $LEVEL[] = $approved_udids[$key][1];
 $Users = array_combine($UDID,$LEVEL);
 // Set to require a minimum usergroup (true/false).
 // NOTE: $BetaMode controls all of this, so if it's set to false none of the betamode variables would matter.
-$BetaModeFromJSON = getJSON("beta_mode");
+$BetaModeFromJSON = json_decode(file_get_contents("beta_mode.json"), true);
 $BetaMode = $BetaModeFromJSON[0];
 // Example: required level is 1; if user is 0 (not assigned), they can't go in, but if they're 1, they can.
 $LowestBetaModeUsergroup = "1"; // Only beta users
