@@ -47,7 +47,6 @@ if (!array_key_exists($ident, $prepName)) {
 	$newArrayDebs = array($ident => $debnames);
 	// name merge
 	$finalName = array_merge($prepName,$newArrayNames);
-//	$finalName = $prepName + $newArrayNames;
 	saveJSON("names",$finalName);
 	// description merge
 	$finalDesc = array_merge($prepDesc,$newArrayDescs);
@@ -64,8 +63,6 @@ if (!array_key_exists($ident, $prepName)) {
 	echo "<br>";
 	$descriptroot = $CurrentDirectory . "descriptions/";
 	echo "<a href='$descriptroot'>Go back</a>.";
-//	print_r($prepDesc);
-//	print_r($finalName);
 } else {
 echo "That already exists!";
 }

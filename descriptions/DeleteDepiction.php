@@ -30,7 +30,7 @@ if (file_exists("../all_packages/$packagejson")) {
 // Don't delete from debnames if this is an existing package
 echo "Successfully removed $ident's depiction! NOTE: This still exists in ../debnames!";
 } else {
-// Otherwise, it's probably a test depiction, so we can delete it.
+// Otherwise, it's probably a test depiction (or something leftover from a deleted package), so we can delete it.
 unset($debnames[$ident]);
 saveJSON("../debnames",$debnames);
 echo "Successfully removed $ident's depiction! NOTE: This does NOT exist in ../debnames! (It's not in the package listing, so we can assume it was a test.)";

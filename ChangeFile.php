@@ -51,7 +51,7 @@ echo "That identifier doesn't exist!";
 }
 exit();
 }
-// Find out what already exists
+// Find out what already exists - this really needs to be rewritten (and it will be soon enough!)
 ////////////////////////////////////
 $ident_json = $ident . ".json";
 $already_exists_base = getJSON("all_packages/$ident");

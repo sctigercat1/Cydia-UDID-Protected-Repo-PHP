@@ -42,16 +42,6 @@ echo "<li>".$ident."</li>";
 }
 echo "</ul>";
 }
-/*
-echo "<ul>";
-foreach ($availableIdentifiers as $ident) {
-echo "<li>".$ident."</li>";
-}
-echo "</ul>";
-echo "<br>";
-echo "<br>";
-echo "<br>";
-*/
 if( $detect->isiOS() ){ ?>
 <!DOCTYPE html>
 <html>

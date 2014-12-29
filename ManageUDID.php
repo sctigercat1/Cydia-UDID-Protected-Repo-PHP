@@ -63,7 +63,6 @@ $newuserlevel = $_POST['level'];
 $newusername = $_POST['name'];
 $oldarray = getJSON("approved_udids_2");
 $newarray = array($userudid,$newuserlevel,$newusername);
-//$finalarray = array_merge($oldarray,$newarray);
 array_push($oldarray,$newarray);
 saveJSON("approved_udids_2",$oldarray);
 echo "User added!";

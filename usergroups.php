@@ -1,53 +1,35 @@
 <?php
 // Permission levels; 0-4 (this can't really be changed)
-// This, at the moment, has no official use.
+// This, at the moment, has no official use, but is displayed on the depiction pages.
 $PermissionLevels = array(
 0 => "Guest", // Public
 1 => "Beta User", // Beta
 2 => "Special Beta User", // Special Beta
 3 => "Friend", // Friend
 4 => "Admin");
-// Users; this is where all UDIDs will be located along with their usergroup
-// First, get UDIDs from management
-// NOTE: you must use the ManageUDID.php page to add UDIDs!
-$approved_udids = json_decode(file_get_contents("approved_udids_2.json"), true);
-// Create blank arrays for holding
-$UDID = array();
-$LEVEL = array();
-// Apply UDIDs and levels from multidimensional into two separate arrays
-foreach ($approved_udids as $key => $value) {
-$UDID[] = $approved_udids[$key][0];
-$LEVEL[] = $approved_udids[$key][1];
-}
-// Now combine the arrays to get the final
-$Users = array_combine($UDID,$LEVEL);
-// Set to require a minimum usergroup (true/false).
-// NOTE: $BetaMode controls all of this, so if it's set to false none of the betamode variables would matter.
-$BetaModeFromJSON = json_decode(file_get_contents("beta_mode.json"), true);
+// Beta Mode is where guests wouldn't be able to see the repo, you would have to have a minimum usergroup as defined with $LowestBetaModeUsergroup
+// First, you don't need to edit these next two lines.
+$BetaModeFromJSON = json_decode(file_get_contents($basedir . "/beta_mode.json"), true);
 $BetaMode = $BetaModeFromJSON[0];
-// Example: required level is 1; if user is 0 (not assigned), they can't go in, but if they're 1, they can.
-$LowestBetaModeUsergroup = "1"; // Only beta users
-// This is what will be displayed in the prompt after adding
-$BetaModeNotAllowedHeader = "Sorry, only approved users can access this repo."; // something changed in Cydia, this doesn't really work any more.
+// Second, define the lowest beta mode group. Here's an example: required level is 1; if user is 0 (not assigned), they can't go in, but if they're 1, they can.
+$LowestBetaModeUsergroup = "1";
+// This is what will be displayed in the prompt after adding. It doesn't always work, but it may occasionally.
+$BetaModeNotAllowedHeader = "Sorry, only approved users can access this repo.";
 // $CurrentDirectory is the current directory of your repo. It'll look something like this: http://www.example.com/repo/
-// If you don't have PHP5, you'll need to manually add it in below.
-// Also, UPDATE THIS IN HTACCESS; directories cannot be automatiaclly found there, so you'll need to manually add it.
+// If you don't have PHP5, you'll need to manually add your url below (see README for the correct code to use), but if you do have PHP5, you don't need to edit the next two variables.
 $CurrentDirectory = "http://".$_SERVER['HTTP_HOST']."/".basename(__DIR__)."/";
-// This is the current folder the repo's in. It would be /repo/ if using the example in the comment above. If root, the code below would most likely return something like /public_html/
+// This is the current folder the repo's in. It would be /repo/ if using the example in the comment above. If root, the code below would most likely return something like /public_html/ or /www/
+// Again, if you have PHP5, it's automatically filled out for you.
+// Also, UPDATE THIS IN HTACCESS; directories cannot be automatically found there, so you'll need to manually adjust it (default htaccess folder is /repo/)
 $CurrentDirectoryFolder = "/".basename(__DIR__)."/";
-// Page Title: variable below + Repo
+// Page Title: variable below + Repo (so, with this, it would be "My Personal Repo")
 $RepoTitleName = "My Personal";
 // Database connection; this is how the download counter works
+// For now, it'll display an error if it can't connect. I'll add a true/false switch in later, but for now I'd just recommend you use it. Setup the database with the sql file in the repo.
 $Database = "localhost";
 $DBUser = "root";
 $DBPass = "admin";
 $DB_DB = "repo_downlads";
-// Change the session variable names for admins
-// You can make these different, but for now they're the same.
-//$RootSession = "rootpasscorrect";
-//$DepictionSession = "passcorrect";
-$RootSession = "repopasscheck";
-$DepictionSession = "repopasscheck";
 // Custom Login Password for Admin interfaces
 $RootPassword = "password";
 $DepictionPassword = "password";
@@ -73,6 +55,22 @@ $RepoArchitectures = "darwin-arm";
 $RepoComponents = "main";
 /////////////////  END RELEASE  /////////////////
 // Done editing!
+// This is where we get the approved UDIDs, but it's really only used if beta mode (see above) is active.
+$basedir = realpath(__DIR__);
+$approved_udids = json_decode(file_get_contents($basedir . "/approved_udids_2.json"), true);
+// Create blank arrays for holding
+$UDID = array();
+$LEVEL = array();
+// Apply UDIDs and levels from multidimensional into two separate arrays
+foreach ($approved_udids as $key => $value) {
+$UDID[] = $approved_udids[$key][0];
+$LEVEL[] = $approved_udids[$key][1];
+}
+// Now combine the arrays to get the final
+$Users = array_combine($UDID,$LEVEL);
+// Change the session variable names for admins
+$RootSession = "repopasscheck521";
+$DepictionSession = "repopasscheck917";
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Functions
 function saveJSON($name,$array) {

@@ -1,6 +1,8 @@
 <?php
 include '../usergroups.php';
-// error
+// Hide universal notices/warnings
+error_reporting(E_ERROR);
+// Error to display if a download count failed (somehow)
 $download_count = "(error)";
 if (!isset($_GET['file'])) {
 echo "No identifier listed!";
@@ -54,8 +56,6 @@ exit();
 }
 $con=mysqli_connect($Database,$DBUser,$DBPass,$DB_DB);
 if (mysqli_connect_errno()) { echo "Failed to connect to MySQL: " . mysqli_connect_error(); }
-//$result = mysqli_query($con,"SELECT `filename` FROM `downloads` WHERE 1");
-//$storeDownloadedPackages = mysqli_fetch_array($result);
 $result = mysqli_query($con,"SELECT * FROM downloads");
 $storeDownloadedPackages = Array();
 while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {

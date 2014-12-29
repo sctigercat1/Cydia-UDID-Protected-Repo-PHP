@@ -6,7 +6,6 @@ include("./usergroups.php");
 require_once 'Mobile_Detect.php';
 $detect = new Mobile_Detect;
 if (!isset($_SERVER["HTTP_X_UNIQUE_ID"])) {
-//if( $detect->isiOS() ){ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,10 +21,7 @@ if (!isset($_SERVER["HTTP_X_UNIQUE_ID"])) {
 		<li><a href="<?php echo $CurrentDirectory."Admin.php"; ?>">Access admin interface (approved users only)</a></li></ul>
 </body>
 </html>
-<?php // }
-//else {
-//echo "<center><font size='4'>You shouldn't be here.</font></center>";
-//}
+<?php
 }
 else {
 function error($code) {
@@ -62,7 +58,7 @@ $requiredusergroup = $packagelist[$file_requested_deb];
 if ($usergroup >= $requiredusergroup) {
 // Log it in mysql
 ////////////////////////////////////
-$link = mysqli_connect($Database, $DBUser, $DBPass); //change parameters to what you use
+$link = mysqli_connect($Database, $DBUser, $DBPass); 
 if (!$link) {
     error("Couldn't connect to the database. Please try your download later.");
 }
@@ -110,5 +106,4 @@ echo "404";
 error("404");
 }
 }
-
 ?>

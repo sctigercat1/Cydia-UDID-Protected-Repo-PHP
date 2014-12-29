@@ -43,23 +43,18 @@ $FourPackages = array();
 foreach($debpermission as $deb => $group) {
 if ($group == 0) {
 $ZeroPackages[] = $deb;
-//echo "added 0 successfully";
 }
 if ($group == 1) {
 $OnePackages[] = $deb;
-//echo "added 1 successfully";
 }
 if ($group == 2) {
 $TwoPackages[] = $deb;
-//echo "added 2 successfully";
 }
 if ($group == 3) {
 $ThreePackages[] = $deb;
-//echo "added 3 successfully";
 }
 if ($group == 4) {
 $FourPackages[] = $deb;
-//echo "added 4 successfully";
 }
 }
 $debnames = getJSON("debnames");
@@ -69,56 +64,21 @@ if ($usergroup >= 0) {
 foreach ($ZeroPackages as $package) {
 $thisident = $debnames[$package];
 $package_stuff = getJSON("all_packages/$thisident");
-$MD5Sum = $package_stuff["MD5Sum"];
-$Maintainer = $package_stuff["Maintainer"];
-$Description = $package_stuff["Description"];
-$Package = $package_stuff["Package"];
-$Section = $package_stuff["Section"];
-$Author = $package_stuff["Author"];
-$Filename = $package_stuff["Filename"];
-$Version = $package_stuff["Version"];
-$Architecture = $package_stuff["Architecture"];
-$Size = $package_stuff["Size"];
-$Name = $package_stuff["Name"];
-$Depiction = $package_stuff["Depiction"];
-$Priority = $package_stuff["Priority"];
-$Tag = $package_stuff["Tag"];
-$Depends = $package_stuff["Depends"];
-$Replaces = $package_stuff["Replaces"];
-$Conflicts = $package_stuff["Conflicts"];
-$finalfile .= "MD5Sum: $MD5Sum
-Maintainer: $Maintainer
-Description: $Description
-Package: $Package
-Section: $Section
-Author: $Author
-Filename: $Filename
-Version: $Version
-Architecture: $Architecture
-Size: $Size
-Name: $Name
-Depiction: $Depiction
-";
-if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag
+$numberofkeys = count(array_keys($package_stuff));
+$i = 0;
+foreach ($package_stuff as $objid => $objval) {
+$i++;
+if ($objval != "") {
+$finalfile .= "$objid: $objval
 ";
 }
-if (!empty($Depends)) {
-$finalfile .= "Depends: $Depends
-";
-}
-if (!empty($Replaces)) {
-$finalfile .= "Replaces: $Replaces
-";
-}
-if (!empty($Conflicts)) {
-$finalfile .= "Conflicts: $Conflicts
-";
-}
-$finalfile .= "Priority: $Priority";
+if ($i == $numberofkeys) {
+// last
 $finalfile .= "
 
 ";
+}
+}
 }
 }
 //////////////
@@ -126,56 +86,21 @@ if ($usergroup >= 1) {
 foreach ($OnePackages as $package) {
 $thisident = $debnames[$package];
 $package_stuff = getJSON("all_packages/$thisident");
-$MD5Sum = $package_stuff["MD5Sum"];
-$Maintainer = $package_stuff["Maintainer"];
-$Description = $package_stuff["Description"];
-$Package = $package_stuff["Package"];
-$Section = $package_stuff["Section"];
-$Author = $package_stuff["Author"];
-$Filename = $package_stuff["Filename"];
-$Version = $package_stuff["Version"];
-$Architecture = $package_stuff["Architecture"];
-$Size = $package_stuff["Size"];
-$Name = $package_stuff["Name"];
-$Depiction = $package_stuff["Depiction"];
-$Priority = $package_stuff["Priority"];
-$Tag = $package_stuff["Tag"];
-$Depends = $package_stuff["Depends"];
-$Replaces = $package_stuff["Replaces"];
-$Conflicts = $package_stuff["Conflicts"];
-$finalfile .= "MD5Sum: $MD5Sum
-Maintainer: $Maintainer
-Description: $Description
-Package: $Package
-Section: $Section
-Author: $Author
-Filename: $Filename
-Version: $Version
-Architecture: $Architecture
-Size: $Size
-Name: $Name
-Depiction: $Depiction
-";
-if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag
+$numberofkeys = count(array_keys($package_stuff));
+$o = 0;
+foreach ($package_stuff as $objid => $objval) {
+$o++;
+if ($objval != "") {
+$finalfile .= "$objid: $objval
 ";
 }
-if (!empty($Depends)) {
-$finalfile .= "Depends: $Depends
-";
-}
-if (!empty($Replaces)) {
-$finalfile .= "Replaces: $Replaces
-";
-}
-if (!empty($Conflicts)) {
-$finalfile .= "Conflicts: $Conflicts
-";
-}
-$finalfile .= "Priority: $Priority";
+if ($o == $numberofkeys) {
+// last
 $finalfile .= "
 
 ";
+}
+}
 }
 }
 /////////
@@ -183,56 +108,21 @@ if ($usergroup >= 2) {
 foreach ($TwoPackages as $package) {
 $thisident = $debnames[$package];
 $package_stuff = getJSON("all_packages/$thisident");
-$MD5Sum = $package_stuff["MD5Sum"];
-$Maintainer = $package_stuff["Maintainer"];
-$Description = $package_stuff["Description"];
-$Package = $package_stuff["Package"];
-$Section = $package_stuff["Section"];
-$Author = $package_stuff["Author"];
-$Filename = $package_stuff["Filename"];
-$Version = $package_stuff["Version"];
-$Architecture = $package_stuff["Architecture"];
-$Size = $package_stuff["Size"];
-$Name = $package_stuff["Name"];
-$Depiction = $package_stuff["Depiction"];
-$Priority = $package_stuff["Priority"];
-$Tag = $package_stuff["Tag"];
-$Depends = $package_stuff["Depends"];
-$Replaces = $package_stuff["Replaces"];
-$Conflicts = $package_stuff["Conflicts"];
-$finalfile .= "MD5Sum: $MD5Sum
-Maintainer: $Maintainer
-Description: $Description
-Package: $Package
-Section: $Section
-Author: $Author
-Filename: $Filename
-Version: $Version
-Architecture: $Architecture
-Size: $Size
-Name: $Name
-Depiction: $Depiction
-";
-if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag
+$numberofkeys = count(array_keys($package_stuff));
+$p = 0;
+foreach ($package_stuff as $objid => $objval) {
+$p++;
+if ($objval != "") {
+$finalfile .= "$objid: $objval
 ";
 }
-if (!empty($Depends)) {
-$finalfile .= "Depends: $Depends
-";
-}
-if (!empty($Replaces)) {
-$finalfile .= "Replaces: $Replaces
-";
-}
-if (!empty($Conflicts)) {
-$finalfile .= "Conflicts: $Conflicts
-";
-}
-$finalfile .= "Priority: $Priority";
+if ($p == $numberofkeys) {
+// last
 $finalfile .= "
 
 ";
+}
+}
 }
 }
 ///////////
@@ -240,56 +130,21 @@ if ($usergroup >= 3) {
 foreach ($ThreePackages as $package) {
 $thisident = $debnames[$package];
 $package_stuff = getJSON("all_packages/$thisident");
-$MD5Sum = $package_stuff["MD5Sum"];
-$Maintainer = $package_stuff["Maintainer"];
-$Description = $package_stuff["Description"];
-$Package = $package_stuff["Package"];
-$Section = $package_stuff["Section"];
-$Author = $package_stuff["Author"];
-$Filename = $package_stuff["Filename"];
-$Version = $package_stuff["Version"];
-$Architecture = $package_stuff["Architecture"];
-$Size = $package_stuff["Size"];
-$Name = $package_stuff["Name"];
-$Depiction = $package_stuff["Depiction"];
-$Priority = $package_stuff["Priority"];
-$Tag = $package_stuff["Tag"];
-$Depends = $package_stuff["Depends"];
-$Replaces = $package_stuff["Replaces"];
-$Conflicts = $package_stuff["Conflicts"];
-$finalfile .= "MD5Sum: $MD5Sum
-Maintainer: $Maintainer
-Description: $Description
-Package: $Package
-Section: $Section
-Author: $Author
-Filename: $Filename
-Version: $Version
-Architecture: $Architecture
-Size: $Size
-Name: $Name
-Depiction: $Depiction
-";
-if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag
+$numberofkeys = count(array_keys($package_stuff));
+$u = 0;
+foreach ($package_stuff as $objid => $objval) {
+$u++;
+if ($objval != "") {
+$finalfile .= "$objid: $objval
 ";
 }
-if (!empty($Depends)) {
-$finalfile .= "Depends: $Depends
-";
-}
-if (!empty($Replaces)) {
-$finalfile .= "Replaces: $Replaces
-";
-}
-if (!empty($Conflicts)) {
-$finalfile .= "Conflicts: $Conflicts
-";
-}
-$finalfile .= "Priority: $Priority";
+if ($u == $numberofkeys) {
+// last
 $finalfile .= "
 
 ";
+}
+}
 }
 }
 //////////
@@ -297,56 +152,21 @@ if ($usergroup >= 4) {
 foreach ($FourPackages as $package) {
 $thisident = $debnames[$package];
 $package_stuff = getJSON("all_packages/$thisident");
-$MD5Sum = $package_stuff["MD5Sum"];
-$Maintainer = $package_stuff["Maintainer"];
-$Description = $package_stuff["Description"];
-$Package = $package_stuff["Package"];
-$Section = $package_stuff["Section"];
-$Author = $package_stuff["Author"];
-$Filename = $package_stuff["Filename"];
-$Version = $package_stuff["Version"];
-$Architecture = $package_stuff["Architecture"];
-$Size = $package_stuff["Size"];
-$Name = $package_stuff["Name"];
-$Depiction = $package_stuff["Depiction"];
-$Priority = $package_stuff["Priority"];
-$Tag = $package_stuff["Tag"];
-$Depends = $package_stuff["Depends"];
-$Replaces = $package_stuff["Replaces"];
-$Conflicts = $package_stuff["Conflicts"];
-$finalfile .= "MD5Sum: $MD5Sum
-Maintainer: $Maintainer
-Description: $Description
-Package: $Package
-Section: $Section
-Author: $Author
-Filename: $Filename
-Version: $Version
-Architecture: $Architecture
-Size: $Size
-Name: $Name
-Depiction: $Depiction
-";
-if (!empty($Tag)) {
-$finalfile .= "Tag: $Tag
+$numberofkeys = count(array_keys($package_stuff));
+$y = 0;
+foreach ($package_stuff as $objid => $objval) {
+$y++;
+if ($objval != "") {
+$finalfile .= "$objid: $objval
 ";
 }
-if (!empty($Depends)) {
-$finalfile .= "Depends: $Depends
-";
-}
-if (!empty($Replaces)) {
-$finalfile .= "Replaces: $Replaces
-";
-}
-if (!empty($Conflicts)) {
-$finalfile .= "Conflicts: $Conflicts
-";
-}
-$finalfile .= "Priority: $Priority";
+if ($y == $numberofkeys) {
+// last
 $finalfile .= "
 
 ";
+}
+}
 }
 }
 file_put_contents("Packages",$finalfile);

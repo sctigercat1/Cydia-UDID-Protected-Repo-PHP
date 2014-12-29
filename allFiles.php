@@ -9,8 +9,12 @@ $_SESSION[$RootSession] = false;
 $session = $_SESSION[$RootSession];
 if ($session === true) {
 $availableIdentifiers = array();
+// Get identifiers
 if (is_dir("all_packages"))
 {
+    if (file_exists("all_packages/info.txt")) {
+      unlink("all_packages/info.txt");
+    }
         if ($handle = opendir("all_packages"))
         {
                 //Notice the parentheses I added:
@@ -26,14 +30,9 @@ if (is_dir("all_packages"))
         }
 }
 if (!isset($_POST['submitted'])) {
-// Get all identifiers
-//////////////////////////////
-
-//////////////////////////////
-//$allDeipictions = getJSON("names");
-//$availableIdentifiers = array_keys($allDeipictions);
+// Alphabetically sort the identifiers
 sort($availableIdentifiers);
-// remove first useless values
+// remove first useless values (. and ..)
 unset($availableIdentifiers[0]);
 unset($availableIdentifiers[1]);
 $form = "<form action='' method='post'>
@@ -77,28 +76,11 @@ echo "</ul>"; ?>
 Identifier: <input type='text' name='identifier'><br>
 <input type='submit' value='Search'>
 <?php }
-
-/*
-echo "<ul>";
-foreach ($availableIdentifiers as $ident) {
-echo "<li>".$ident."</li>";
-}
-echo "</ul>";
-echo "<br>";
-echo "<br>";
-echo "<br>";
-*/
 } else {
 $identifier = $_POST['identifier'];
-//$names = getJSON("names");
-//$descs = getJSON("description");
-//$debnames = getJSON("../debnames");
 if (in_array($identifier,$availableIdentifiers)) {
 $link1 = $CurrentDirectory . "ChangeFile.php?identifier=";
 $finallink2 = $link1 . $identifier;
-//$identname = $names[$identifier];
-//$identdesc = $descs[$identifier];
-//$identdeb = $debnames[$identifier];
 if( $detect->isiOS() ){ ?>
 <!DOCTYPE html>
 <html>
