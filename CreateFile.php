@@ -160,6 +160,7 @@ Version: <input type="text" name="Version" value="1.0"><br>
 Architecture: <input type="text" name="Architecture" value="iphoneos-arm"><br>
 Description: <input type="text" name="Description"><br>
 Size: <input type="text" name="Size"><br>
+Installed-Size: <input type="text" name="Installed-Size"><br>
 Name: <input type="text" name="Name"><br>
 Depiction: <input type="text" name="Depiction" value="<?php echo $depictionbase; ?>"><br>
 Priority: <input type="text" name="Priority" value="optional"><br>
@@ -193,6 +194,7 @@ Version: <input type="text" name="Version" value="1.0"><br>
 Architecture: <input type="text" name="Architecture" value="iphoneos-arm"><br>
 Description: <input type="text" name="Description"><br>
 Size: <input type="text" name="Size"><br>
+Installed-Size: <input type="text" name="Installed-Size"><br>
 Name: <input type="text" name="Name"><br>
 Depiction: <input type="text" name="Depiction" id="depiction" value="<?php echo $depictionbase; ?>"><br>
 Priority: <input type="text" name="Priority" value="optional"><br>
