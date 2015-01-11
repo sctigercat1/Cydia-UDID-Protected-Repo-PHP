@@ -70,7 +70,7 @@ $LEVEL[] = $approved_udids[$key][1];
 $Users = array_combine($UDID,$LEVEL);
 // Change the session variable names for admins
 $RootSession = "repopasscheck521";
-$DepictionSession = "repopasscheck917";
+$DepictionSession = "repopasscheck521";
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Functions
 function saveJSON($name,$array) {
