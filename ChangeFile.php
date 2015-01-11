@@ -68,6 +68,7 @@ $old_author = $already_exists_base['Author'];
 $old_version = $already_exists_base['Version'];
 $old_arch = $already_exists_base['Architecture'];
 $old_size = $already_exists_base['Size'];
+$old_installedsize = $already_exists_base['Installed-Size'];
 $old_name = $already_exists_base['Name'];
 $old_depiction = $already_exists_base['Depiction'];
 $old_priority = $already_exists_base['Priority'];
@@ -89,6 +90,7 @@ $author = $_POST['author'];
 $version = $_POST['version'];
 $arch = $_POST['arch'];
 $size = $_POST['size'];
+$installedsize = $_POST['installedsize'];
 $name = $_POST['name'];
 $depiction = $_POST['depiction'];
 $priority = $_POST['priority'];
@@ -120,6 +122,7 @@ $thisnewpackageinfo = array("MD5Sum" => $md5sum,
 "Version" => $version,
 "Architecture" => $arch,
 "Size" => $size,
+"Installed-Size" => $installedsize,
 "Name" => $name,
 "Depiction" => $depiction,
 "Priority" => $priority,
@@ -190,6 +193,7 @@ Version: <input type="text" name="version" value="<?php echo $old_version; ?>"><
 Architecture: <input type="text" name="arch" value="<?php echo $old_arch; ?>"><br>
 Description: <input type="text" name="description" value="<?php echo $old_description; ?>"><br>
 Size: <input type="text" name="size" value="<?php echo $old_size; ?>"><br>
+Installed-Size: <input type="text" name="installedsize" value="<?php echo $old_installedsize; ?>"><br>
 Name: <input type="text" name="name" value="<?php echo $old_name; ?>"><br>
 Depiction: <input type="text" name="depiction" value="<?php echo $old_depiction; ?>"><br>
 Priority: <input type="text" name="priority" value="<?php echo $old_priority; ?>"><br>
@@ -220,6 +224,7 @@ Version: <input type="text" name="version" value="<?php echo $old_version; ?>"><
 Architecture: <input type="text" name="arch" value="<?php echo $old_arch; ?>"><br>
 Description: <input type="text" name="description" value="<?php echo $old_description; ?>"><br>
 Size: <input type="text" name="size" value="<?php echo $old_size; ?>"><br>
+Installed-Size: <input type="text" name="installedsize" value="<?php echo $old_installedsize; ?>"><br>
 Name: <input type="text" name="name" value="<?php echo $old_name; ?>"><br>
 Depiction: <input type="text" name="depiction" value="<?php echo $old_depiction; ?>"><br>
 Priority: <input type="text" name="priority" value="<?php echo $old_priority; ?>"><br>
