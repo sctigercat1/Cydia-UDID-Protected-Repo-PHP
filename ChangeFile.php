@@ -186,7 +186,7 @@ document.getElementByName("depiction").value = "<?php echo $old_depiction; ?>"+x
 Identifier: <input type="text" name="identifier" value="<?php echo $old_identifier; ?>" onkeyup="copyIt()"><br>
 Deb Name: <input type="text" name="debname" value="<?php echo $old_debname; ?>"><br>
 MD5Sum: <input type="text" name="md5sum" value="<?php echo $old_md5sum; ?>"><br>
-Maintainer: <input type="text" name="maintainer" value="Me">
+Maintainer: <input type="text" name="maintainer" value="<? echo $old_maintainer; ?>">
 Section: <input type="text" name="section" value="<?php echo $old_section; ?>"><br>
 Author: <input type="text" name="author" value="<?php echo $old_author; ?>"><br>
 Version: <input type="text" name="version" value="<?php echo $old_version; ?>"><br>
@@ -217,7 +217,7 @@ document.getElementByName("depiction").value = "<?php echo $old_depiction; ?>"+x
 Identifier: <input type="text" name="identifier" value="<?php echo $old_identifier; ?>" onkeyup="copyItTwo()"><br>
 Deb Name: <input type="text" name="debname" value="<?php echo $old_debname; ?>"><br>
 MD5Sum: <input type="text" name="md5sum" value="<?php echo $old_md5sum; ?>"><br>
-Maintainer: <input type="text" name="maintainer" value="Me">
+Maintainer: <input type="text" name="maintainer" value="<? echo $old_maintainer; ?>">
 Section: <input type="text" name="section" value="<?php echo $old_section; ?>"><br>
 Author: <input type="text" name="author" value="<?php echo $old_author; ?>"><br>
 Version: <input type="text" name="version" value="<?php echo $old_version; ?>"><br>
