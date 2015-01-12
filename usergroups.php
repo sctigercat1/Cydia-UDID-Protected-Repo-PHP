@@ -9,7 +9,7 @@ $PermissionLevels = array(
 4 => "Admin");
 // Beta Mode is where guests wouldn't be able to see the repo, you would have to have a minimum usergroup as defined with $LowestBetaModeUsergroup
 // First, you don't need to edit these next two lines.
-$BetaModeFromJSON = json_decode(file_get_contents($basedir . "/beta_mode.json"), true);
+$BetaModeFromJSON = json_decode(file_get_contents($basedir . "beta_mode.json"), true);
 $BetaMode = $BetaModeFromJSON[0];
 // Second, define the lowest beta mode group. Here's an example: required level is 1; if user is 0 (not assigned), they can't go in, but if they're 1, they can.
 $LowestBetaModeUsergroup = "1";
