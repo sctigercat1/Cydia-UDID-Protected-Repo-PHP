@@ -132,8 +132,7 @@ echo "New file added! If you haven't already, go ahead and add the deb to /debs.
 }
 }
 } else {
-$depictionbase = $CurrentDirectory . "descriptions/pages.php?file=";
-if( $detect->isiOS() ){ ?>
+$depictionbase = $CurrentDirectory . "descriptions/pages.php?file="; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,69 +148,102 @@ var x = document.getElementByName("identifier").value;
 document.getElementByName("depiction").value = "<?php echo $depictionbase; ?>"+x;
 }
 </script>
-		<ul><li><p><form action='' method='post' enctype='multipart/form-data'>
-Identifier: <input type="text" name="Package" id="identifier" onkeyup="copyIt()"><br>
-Deb Name (no .deb): <input type="text" name="debname"><br>
-MD5Sum: <input type="text" name="MD5Sum"><br>
-Maintainer: <input type="text" name="Maintainer" value="Me">
-Section: <input type="text" name="Section"><br>
-Author: <input type="text" name="Author" value="Me"><br>
-Version: <input type="text" name="Version" value="1.0"><br>
-Architecture: <input type="text" name="Architecture" value="iphoneos-arm"><br>
-Description: <input type="text" name="Description"><br>
-Size: <input type="text" name="Size"><br>
-Installed-Size: <input type="text" name="Installed-Size"><br>
-Name: <input type="text" name="Name"><br>
-Depiction: <input type="text" name="Depiction" value="<?php echo $depictionbase; ?>"><br>
-Priority: <input type="text" name="Priority" value="optional"><br>
-Depends: <input type="text" name="Depends" value=""><br>
-Conflicts: <input type="text" name="Conflicts" value=""><br>
-Replaces: <input type="text" name="Replaces" value=""><br>
-Tag (can leave blank): <input type="text" name="Tag"><br>
-Permission Level: <select name="permission"><option value="0">Level 0</option><option value="1">Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option></select><br>
-(optional) Upload deb file: <input type="file" name="deb" id="deb"><br>
-Finally, if you want to add a dipiction here, go ahead and type it below:<br>
-<textarea name="depiction_content" id="depiction_content" rows="8" cols="45"></textarea><br>
-<input type='submit' value="Submit">
-</form><br></p></li></ul>
+		<ul><li><p>
+
+<form action='' method='post' enctype='multipart/form-data'>            <div class="box">
+                <span class="label">Identifier: </span>
+                <span class="ib"> <input type="text" name="Package" id="identifier" onkeyup="copyIt()"></span>
+            </div>
+            <div class="box">
+                <span class="label">Deb Name (no .deb): </span>
+                <span class="ib"> <input type="text" name="debname">
+                </span>
+            </div>
+            <div class="box">
+                <span class="label">MD5Sum:  </span>
+                <span class="ib"><input type="text" name="MD5Sum"></span>
+            </div>
+            <div class="box">
+                <span class="label">Maintainer: </span>
+                <span class="ib">  <input type="text" name="Maintainer" value="Me"></span>
+            </div>
+            <div class="box">
+                <span class="label">Section: </span>
+                <span class="ib"><input type="text" name="Section"></span>
+            </div>
+            <div class="box">
+                <span class="label">Author: </span>
+                <span class="ib">  <input type="text" name="Author" value="Me"></span>
+            </div>
+            <div class="box">
+                <span class="label">Version: </span>
+                <span class="ib">  <input type="text" name="Version" value="1.0"></span>
+            </div>
+            <div class="box">
+                <span class="label">Discount: </span>
+                <span class="ib">  <input type="text" name="discount_per" id="discount_per"/>
+                </span></div>
+    <div class="box">
+                <span class="label">Architecture: </span>
+                <span class="ib">  <input type="text" name="Architecture" value="iphoneos-arm">
+                </span></div>
+    <div class="box">
+                <span class="label">Description: </span>
+                <span class="ib">  <input type="text" name="Description">
+                </span></div>
+    <div class="box">
+                <span class="label">Size: </span>
+                <span class="ib">  <input type="text" name="Size">
+                </span></div>
+    <div class="box">
+                <span class="label">Installed-Size: </span>
+                <span class="ib">  <input type="text" name="Installed-Size">
+                </span></div>
+    <div class="box">
+                <span class="label">Depiction: </span>
+                <span class="ib">  <input type="text" name="Depiction" value="<?php echo $depictionbase; ?>">
+                </span></div>
+    <div class="box">
+                <span class="label">Priority: </span>
+                <span class="ib">  <input type="text" name="Priority" value="optional">
+                </span></div>
+    <div class="box">
+                <span class="label">Depends: </span>
+                <span class="ib">  <input type="text" name="Depends" value="">
+                </span></div>
+    <div class="box">
+                <span class="label">Conflicts: </span>
+                <span class="ib">  <input type="text" name="Conflicts" value="">
+    <div class="box">
+                <span class="label">Replaces: </span>
+                <span class="ib">  <input type="text" name="Replaces" value="">
+                </span></div>
+    <div class="box">
+                <span class="label">Tag (can leave blank): </span>
+                <span class="ib">  <select name="permission"><option value="0">Level 0</option><option value="1">Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option></select>
+                </span></div>
+    <div class="box">
+                <span class="label">Permission Level: </span>
+                <span class="ib">  <input type="text" name="discount_per" id="discount_per"/>
+                </span></div>
+                    <div class="box">
+                <span class="label">(optional) Upload deb file: </span>
+                <span class="ib">  <input type="file" name="deb" id="deb">
+                </span></div>
+                    <div class="box">
+                <span class="label">Depiction: </span>
+                <span class="ib">  <textarea name="depiction_content" id="depiction_content" rows="8" cols="45"></textarea>
+                <input type='submit' value="Submit" class="button">
+                    <br><br>
+
+        </form>
+                        </p></li></ul>
 </body>
 </html>
-<?php } else { ?>
-<script type = "text/javascript">
-function copyItTwo() {
-var x = document.getElementById("identifier").value;
-document.getElementById("depiction").value = "<?php echo $depictionbase; ?>"+x;
-}
-</script>
-<form action='' method='post' enctype='multipart/form-data'>
-Identifier: <input type="text" name="Package" id="identifier" onkeyup="copyItTwo()"><br>
-Deb Name (no .deb) <input type="text" name="debname"><br>
-MD5Sum: <input type="text" name="MD5sum"><br>
-Maintainer: <input type="text" name="Maintainer" value="Me">
-Section: <input type="text" name="Section"><br>
-Author: <input type="text" name="Author" value="Me"><br>
-Version: <input type="text" name="Version" value="1.0"><br>
-Architecture: <input type="text" name="Architecture" value="iphoneos-arm"><br>
-Description: <input type="text" name="Description"><br>
-Size: <input type="text" name="Size"><br>
-Installed-Size: <input type="text" name="Installed-Size"><br>
-Name: <input type="text" name="Name"><br>
-Depiction: <input type="text" name="Depiction" id="depiction" value="<?php echo $depictionbase; ?>"><br>
-Priority: <input type="text" name="Priority" value="optional"><br>
-Depends: <input type="text" name="Depends" value=""><br>
-Conflicts: <input type="text" name="Conflicts" value=""><br>
-Replaces: <input type="text" name="Replaces" value=""><br>
-Tag (can leave blank): <input type="text" name="Tag"><br>
-Permission Level: <select name="permission"><option value="0">Level 0</option><option value="1">Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option></select><br>
-(optional) Upload deb file: <input type="file" name="deb" id="deb"><br>
-Finally, if you want to add a dipiction here, go ahead and type it below:<br>
-<textarea name="depiction_content" id="depiction_content" rows="8" cols="50"></textarea><br>
-<input type='submit' value="Submit">
-</form><br>
-<?php }
+<?php } 
 ?>
 <?php }
-} else {
+ else {
 $authurl = $CurrentDirectory . "auth.php";
 header("Location: $authurl");
 }
