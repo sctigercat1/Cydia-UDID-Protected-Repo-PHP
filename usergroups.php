@@ -61,7 +61,7 @@ $approved_udids = json_decode(file_get_contents(realpath(__DIR__ . "/approved_ud
 // But first, let's check if there aren't any approved UDIDs in the list.
 $UDID = array();
 $LEVEL = array();
-if ($approved_udids == $UDID) {
+if ($approved_udids != $UDID) {
 // Apply UDIDs and levels from multidimensional into two separate arrays
 foreach ($approved_udids as $key => $value) {
 $UDID[] = $approved_udids[$key][0];
