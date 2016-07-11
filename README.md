@@ -1,3 +1,5 @@
+NB: This project has been deprecated for a while, and honestly I just forgot to make a note about it within the repo. Since I don't currently have a jailbroken device I won't be able to successfully rewrite anything (because that's what this repo could use -- a complete rewrite), but I'd suggest this cydia repo framework in the meantime- https://github.com/82Flex/WEIPDCRM. I'll be leaving this github repo up for archiving purpose but it's ultimately not as functioning as I'd like it to be (as it was written when I began learning php). Thanks for all the support and suggestions from all that I've received over the course of the project's lifetime, it's been truly awesome. :)
+
 UDID Protected Cydia Repo in PHP
 =============================
 
