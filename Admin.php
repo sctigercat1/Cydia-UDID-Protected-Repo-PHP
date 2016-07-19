@@ -32,8 +32,8 @@ echo "<center><font size='4'>Hi there, you're about to be redirected to the logi
 echo "<script>function goAway() { window.location = \"$rootauthurl\" }
 setInterval(goAway, 3000);</script>";
 }
-} else {
-if( $detect->isiOS() ){ ?>
+} else { ?>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,20 +57,6 @@ if( $detect->isiOS() ){ ?>
 			</ul></p></li></ul>
 </body>
 </html>
+
 <?php }
-else {
-echo "<center><font size='4'>Hi! Welcome to the Admin Interface!</center><br>
-			<ul>
-			<li><a href='CreateFile.php'>Create file</a></li>
-			<li><a href='DeleteFile.php'>Delete file</a></li>
-			<li><a href='ChangeFile.php'>Change file</a></li>
-			<li><a href='allFiles.php'>All files</a></li>
-			<li><a href='descriptions'>Depiction Interface</a></li>
-			<li><a href='repo.php'>Repo Main Page</a></li>
-			<li><a href='ManageUDID.php'>Manage UDIDs</a></li>
-			<li><a href='BetaMode.php'>Beta Mode</a></li>
-			<li><a href='unauth.php'>Unauthenticate</a></li>
-			</ul></font>";
-}
-}
 ?>
